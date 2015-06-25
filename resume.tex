@@ -41,18 +41,19 @@
 \usepackage{graphicx}                    % Enable pdflatex
 \usepackage[svgnames]{xcolor}            % Colors by their 'svgnames'
 \usepackage{geometry}
-	\textheight=700px                    % Saving trees ;-)
+	\textheight=700px                   % Saving trees ;-)
 \usepackage{url}
+\usepackage{multicol}                    % multiple columns
 
-\frenchspacing              % Better looking spacings after periods
-\pagestyle{empty}           % No pagenumbers/headers/footers
+\frenchspacing                           % Better looking spacings after periods
+\pagestyle{empty}                        % No pagenumbers/headers/footers
 
 %%% Custom sectioning (sectsty package)
 %%% ------------------------------------------------------------
 \usepackage{sectsty}
 
-\sectionfont{%			            % Change font of \section command
-	\usefont{OT1}{phv}{b}{n}%		% bch-b-n: CharterBT-Bold font
+\sectionfont{%			              % Change font of \section command
+	\usefont{OT1}{phv}{b}{n}%		   % bch-b-n: CharterBT-Bold font
 	\sectionrule{0pt}{0pt}{-5pt}{3pt}}
 
 %%% Macros
@@ -62,33 +63,47 @@
 \newcommand{\sepspace}{\vspace*{1em}}		% Vertical space macro
 
 \newcommand{\MyName}[1]{ % Name
-		\Huge \usefont{OT1}{phv}{b}{n} \hfill #1
+		\Huge \usefont{OT1}{phv}{b}{n} \hfill #1 % \usefont{<encoding>}{<family>}{<series>}{<shape>}
 		\par \normalsize \normalfont}
 		
 \newcommand{\MySlogan}[1]{ % Slogan (optional)
-		\large \usefont{OT1}{phv}{m}{n}\hfill \textit{#1}
+		\large \usefont{OT1}{phv}{m}{n}\hfill \textit{#1} % \textit italic text
 		\par \normalsize \normalfont}
 
-\newcommand{\NewPart}[1]{\section*{\uppercase{#1}}}
+\newcommand{\NewPart}[1]{\section*{ #1 }}          % * 去掉section标号
 
 \newcommand{\PersonalEntry}[2]{
 		\noindent\hangindent=2em\hangafter=0 % Indentation
-		\parbox{\spacebox}{        % Box to align text
-		\textit{#1}}		       % Entry name (birth, address, etc.)
+		\parbox{\spacebox}{#1}     % Box to align text		       
 		\hspace{1.5em} #2 \par}    % Entry value
 
 \newcommand{\SkillsEntry}[2]{      % Same as \PersonalEntry
 		\noindent\hangindent=2em\hangafter=0 % Indentation
 		\parbox{\spacebox}{        % Box to align text
-		\textit{#1}}			   % Entry name (birth, address, etc.)
+		\textbf{#1}}			   % Entry name (birth, address, etc.)
 		\hspace{1.5em} #2 \par}    % Entry value	
 		
 \newcommand{\EducationEntry}[4]{
 		\noindent \textbf{#1} \hfill      % Study
 		\colorbox{Black}{%
-			\parbox{6em}{%
+			\parbox{7em}{%
 			\hfill\color{White}#2}} \par  % Duration
-		\noindent \textit{#3} \par        % School
+		\noindent \textbf{#3} \par        % School
+		\noindent\hangindent=2em\hangafter=0 \small #4 % Description
+		\normalsize \par}
+
+\newcommand{\AcademicEntry}[4]{
+		\noindent \textbf{#1} \hfill      % Study
+	     \noindent \textbf{#2} \par        % School
+		\noindent \textbf{#3} \par        % School
+		\noindent\hangindent=2em\hangafter=0 \small #4 % Description
+		\normalsize \par}
+		
+\newcommand{\HonorEntry}[4]{
+		\noindent #1 \hfill      % Study
+		\colorbox{Black}{%
+		\parbox{7em}{ \hfill\color{White}#2 }} \par  % Duration
+		\noindent #3 \par        % School
 		\noindent\hangindent=2em\hangafter=0 \small #4 % Description
 		\normalsize \par}
 
@@ -110,7 +125,7 @@
 %\end{wrapfigure}
 
 \MyName{姜政冬}
-%\MySlogan{个人简历}
+%\MySlogan{RubyChina}
 
 \sepspace
 
@@ -118,32 +133,39 @@
 %%% ------------------------------------------------------------
 \NewPart{个人信息}{}
 
-\PersonalEntry{手机}{18092482172}
-\PersonalEntry{邮箱}{\url{xautjzd@gmail.com}}
-\PersonalEntry{地址}{陕西省西安市}
+\begin{multicols}{2}                           % 分两栏
+\PersonalEntry{电  话}{18092482172}
+\PersonalEntry{邮  箱}{\url{xautjzd@gmail.com}}
+\PersonalEntry{地  址}{陕西省西安市}
 \PersonalEntry{GitHub}{https://github.com/xautjzd}
-\PersonalEntry{博客}{http://xautjzd.github.com, http://blog.csdn.net/jiangzhengdong}
+\PersonalEntry{博  客}{http://xautjzd.github.com}
+
+\columnbreak                                   % 强制分栏
+\includegraphics[width=0.2\textwidth\hfill]{xautjzd1.jpg}
+\end{multicols}
 
 %%% Education
 %%% ------------------------------------------------------------
 \NewPart{教育经历}{}
 
-\EducationEntry{硕士}{2012-至今}{西安理工大学软件工程}{自保研以来，一直不断地给自己充电，参与教研室的项目，并逐渐成为核心开发人员，同时也踊跃参与开源活动。2012年参加OSC西安站活动，并接触Ruby,后自学Ruby，并于2013年7月加入西安Rubists小组，定期参加Rubists小组活动，同时也担任过Rails Girl西安站的教练。}
+\EducationEntry{西安理工大学(硕士-保研)}{2012-至今}{软件工程}{研一研二期间作为实验室核心成员参与多个项目开发，并在研二课题研究中研究过Hadoop，最终转向行为识别与移动云计算迁移，比较熟悉常用的分类算法。}
 \sepspace
 
-\EducationEntry{学士}{2008-2012}{西安理工大学网络工程}{大一下自学C++；大二一次偶然接触Linux，自此便深陷其中，只要有空余时间都会钻研，Debian、Red Hat系列都玩过，最终选择Fedora；同时在大二下开始自学Java，直至本科毕业，Java的Struts2/Hibernate/Spring框架都有所研究，本想将Java这条道路走下去，只是由于其他原因最终放弃。}
+\EducationEntry{西安理工大学(学士)}{2008-2012}{网络工程}{大一下自学C++；大二开始接触Linux，并开始钻研，Debian、Red Hat系列都玩过，最终选择Fedora；大二下自学Java，并研究过Struts2/Hibernate/Spring框架。}
 
 %%% Skills
 %%% ------------------------------------------------------------
 \NewPart{个人技能}{}
 
-\SkillsEntry{专业技能}{熟悉Linux系统、Shell编程，熟练使用Vim、Git}
-\SkillsEntry{}{熟悉C语言、网络编程，熟悉Java，了解SSH}
-\SkillsEntry{}{熟悉ASP.NET MVC熟悉SQL Server,了解MySQL和Mongodb}
-\SkillsEntry{}{熟悉HTML/JavaScript/Json/Ajax,熟悉EasyUI/Boostrap}
-\SkillsEntry{}{熟悉Ruby及Ruby on Rails,熟悉Markdown}
-\SkillsEntry{}{了解函数式编程}
-\SkillsEntry{}{具有良好的英文阅读和理解能力}
+\SkillsEntry{专业技能}{熟悉Ruby及Ruby on Rails}
+\SkillsEntry{}{熟悉Vim, Git, Markdown}
+\SkillsEntry{}{熟悉Linux C、Socket编程}
+\SkillsEntry{}{熟悉Linux系统、Shell编程}
+\SkillsEntry{}{熟悉机器学习常用算法，了解Hadoop}
+\SkillsEntry{}{熟悉数据结构与与常用算法}
+\SkillsEntry{}{熟悉HTML/JavaScript/Json/Ajax}
+\SkillsEntry{}{熟悉ASP.NET MVC、SQL Server，了解MySQL、MongoDB}
+\SkillsEntry{}{了解Java、Tex、函数式编程}
 \SkillsEntry{英语水平}{CET-6}
 
 %\SkillsEntry{Software}{\textsc{Matlab}, \LaTeX, \textsc{Ansys}, \textsc{Comsol}}
@@ -152,44 +174,55 @@
 %%% ------------------------------------------------------------
 \NewPart{项目经历}{}
 
-\EducationEntry{搭建系统框架}{2013.12-至今}{}{将教研室以前着手的几个项目各功能抽取出来，形成一个大体框架，方便今后能够快速地开发，同时将UI从以前的EasyUI转换到Bootstrap，并且在其中集成权限管理、基本增删改查、图表曲线显示、报表生成、地图显示及文件的上传与下载等常用功能。此项工作主要由我进行总体设计，然后按照各功能模块分发给教研室其他人员。}
+\EducationEntry{远程医疗系统}{2014.1-2014.3}{}{此系统的框架主要由我负责完成。我主要负责将以前着手的几个项目各功能抽取出来，形成一个框架，同时将UI从以前的EasyUI转换到Bootstrap，并且在其中集成权限管理、基本增删改查、图表曲线显示、报表生成、地图显示及文件的上传与下载等常用功能。}
 \sepspace
 
-\EducationEntry{气调库环境监测系统}{2013(5-11)}{}{主要功能为数据转换及数据图表显示。由我独自设计开发，采用ASP.NET MVC3、SQL Server2005、EasyUI和Highcharts进行开发。采集设备将采集到的数据存储在Access数据库中，由于某些原因，需要将Access中的数据导出来，并且以图表形式直观地展示各冷库参数，通过Web进行远程监控，而不用派专职人员蹲守在设备采集点。}
+\EducationEntry{气调库环境监测系统}{2013.5-2013.11}{}{主要功能为数据转换及数据图表显示，由我单独完成。采集设备将采集到的数据存储在Access数据库中，由于某些原因，需要将Access中的数据导出来，并且以图表形式直观地展示各冷库参数，通过Web进行远程监控，而不用派专职人员蹲守在设备采集点。}
 \sepspace
 
-\EducationEntry{生产经营信息管理系统}{2012.8-2013.9}{}{主要功能为信息的录入及报表的生成，采用ASP.NET MVC3、SQL Server2005、EasyUI和 ReportViewer 进行开发。ASP.NET MVC3主要用于项目的构建，同时也会用到Entity Framework，ReportViewer插件则主要用于报表的生成。此系统由我和研三师兄两人负责设计开发，前期由我和师兄共同设计开发，后期由于师兄面临毕业，主要由我一个人负责。}
+\EducationEntry{生产经营信息管理系统}{2012.8-2013.9}{}{主要功能为信息的录入及报表的生成。此系统由我和研三师兄两人负责设计开发，前期由我和师兄共同设计开发，后期由于师兄面临毕业，主要由我负责完成。}
 \sepspace
 
-\EducationEntry{果业技术服务平台}{2011.9-2012.6}{}{主要功能是信息的发布与信息的维护，采用ASP.NET MVC进行开发。从零开始学习ASP.NET MVC，边学习边实践，这段时间进步较大，除熟练掌握ASP.NET MVC外，并逐渐熟悉Ajax/jQuery/HTML等知识。当时ASP.NET MVC刚出不久，中文资料稀缺，所以只能通过英文文档学习，也正是在此环境中锻炼了自己阅读英文文档的能力，同时也逐渐养成学习英文资料的习惯，碰到问题无法解决也是用英文在Google上查找。另外，也感受到了StackOverflow的强大，提升了自己英语提问的能力。}
+\EducationEntry{果业技术服务平台}{2011.9-2012.6}{}{主要功能是信息的发布与信息的维护，分前后台，前台主要针对一般用户进行信息的浏览，而后台则由企业人员负责维护，进行信息的添加与发布。系统由我与师兄共同开发，前期师兄负责系统的设计，而我负责实现。}
 
 
 %%% Awards & Honours
 %%% ------------------------------------------------------------
 \NewPart{获奖情况}{}
 
-\EducationEntry{被西安秦北学校评为优秀志愿者}{2013}{}
+\HonorEntry{获得国家励志奖学金}{2009-2010}{}
 
-\EducationEntry{被评为2012届优秀毕业生}{2012}{}
+\HonorEntry{获得院图灵杯科技节一等奖}{2010}{}
 
-\EducationEntry{生产实习中与小组成员一起获得最具团队精神小组称号}{2011}{}
+\HonorEntry{获得校三等奖学金}{2008-2009}{}
 
-\EducationEntry{获得院图灵杯科技节一等奖}{2010}{}
+\HonorEntry{被评为2012届优秀毕业生}{2012}{}
 
-\EducationEntry{获得国家励志奖学金}{2009-2010}{}
+\HonorEntry{被西安秦北学校评为优秀志愿者}{2013}{}
 
-\EducationEntry{获得校三好学生荣誉称号}{2009-2010}{}
+\HonorEntry{获得校三好学生荣誉称号}{2009-2010}{}
 
-\EducationEntry{获得校三等奖学金}{2008-2009}{}
+\HonorEntry{生产实习中与小组成员一起获得最具团队精神小组称号}{2011}{}
+
+%%% Academic Honors
+%%% ------------------------------------------------------------
+\NewPart{研究成果}{}
+
+\AcademicEntry{论文发表}{}{}{基于灰色系统理论的气调库环境预测模型[J]. 计算机系统应用,2014,23(3):123-126,118}
+\sepspace
+
+\AcademicEntry{软件著作权}{}{}{气调库环境监测系统，国家版权局，软件登记号：2014SR019840，2014.2.19}
+\AcademicEntry{}{}{}{果品生产经营信息管理系统，国家版权局，软件登记号：2014SR039978，2014.04.09}
+\sepspace
 
 %%% Hobby
 %%% ------------------------------------------------------------
-\NewPart{兴趣爱好}{}
-打羽毛球、乒乓球，看网球，读书，逛博客，关注科技新闻和新技术
+%\NewPart{兴趣爱好}{}
+%热爱打羽毛球、乒乓球，喜欢看网球比赛、读书，经常逛科技博客、GitHub、Hacker News和Startup News，时刻关注科技新闻和业界动态。
 
 %%% Hobby
 %%% ------------------------------------------------------------
 \NewPart{自我评价}{}
-自学能力较强，分析解决问题能力较强。其次，我也一直很注重自己知识的储备，不断地给自己充电，并且规定每月至少阅读一本书籍，每晚至少阅读30分钟。稍微欠缺的可能是沟通能力，属于典型的宅男，不太擅长与陌生人沟通。
+热爱编程，喜欢钻研新语言、新技术，自学能力强，查找资料、分析解决问题能力强，同时敢于面对并克服困难，也能够吃苦耐劳，抗压能力较强。其次，我也一直很注重自己知识的储备，不断地给自己充电，养成每晚睡前阅读的习惯。
 \end{CJK}     % 结束中文环境
 \end{document}

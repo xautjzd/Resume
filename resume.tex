@@ -54,7 +54,7 @@
 
 \sectionfont{%			              % Change font of \section command
 	\usefont{OT1}{phv}{b}{n}%		   % bch-b-n: CharterBT-Bold font
-	\sectionrule{0pt}{0pt}{-5pt}{3pt}}
+	\sectionrule{0pt}{0pt}{-10pt}{3pt}}
 
 %%% Macros
 %%% ------------------------------------------------------------
@@ -62,56 +62,46 @@
 \settowidth{\spacebox}{8888888888}			% Box to align text
 \newcommand{\sepspace}{\vspace*{1em}}		% Vertical space macro
 
-\newcommand{\MyName}[1]{ % Name
-		\Huge \usefont{OT1}{phv}{b}{n} \hfill #1 % \usefont{<encoding>}{<family>}{<series>}{<shape>}
-		\par \normalsize \normalfont}
+\newcommand{\Title}[1]{ % Name
+		\begin{center}
+			\Huge #1
+		\end{center}
+		\par \normalsize \normalfont} % \par 换行
 		
-\newcommand{\MySlogan}[1]{ % Slogan (optional)
+\newcommand{\Slogan}[1]{ % Slogan (optional)
 		\large \usefont{OT1}{phv}{m}{n}\hfill \textit{#1} % \textit italic text
 		\par \normalsize \normalfont}
 
-\newcommand{\NewPart}[1]{\section*{ #1 }}          % * 去掉section标号
+\newcommand{\Section}[1]{\section*{ #1 }}          % * 去掉section标号
 
-\newcommand{\PersonalEntry}[2]{
+\newcommand{\SubSection}[2]{
+	\sepspace \noindent \textbf{#1} \hfill      % 项目名称
+	\colorbox{Black}{\parbox{7em}{\hfill\color{White}#2}} \par  % 时间
+	\normalsize \par \sepspace}
+
+
+\newcommand{\Personal}[2]{
 		\noindent\hangindent=2em\hangafter=0 % Indentation
 		\parbox{\spacebox}{#1}     % Box to align text		       
 		\hspace{1.5em} #2 \par}    % Entry value
 
-\newcommand{\SkillsEntry}[2]{      % Same as \PersonalEntry
-		\noindent\hangindent=2em\hangafter=0 % Indentation
-		\parbox{\spacebox}{        % Box to align text
-		\textbf{#1}}			   % Entry name (birth, address, etc.)
-		\hspace{1.5em} #2 \par}    % Entry value	
-		
-\newcommand{\EducationEntry}[4]{
-		\noindent \textbf{#1} \hfill      % Study
+\newcommand{\Education}[3]{
+		\noindent \textbf{#1} \hfill      % \textbf 加粗
 		\colorbox{Black}{%
-			\parbox{7em}{%
-			\hfill\color{White}#2}} \par  % Duration
-		\noindent \textbf{#3} \par        % School
-		\noindent\hangindent=2em\hangafter=0 \small #4 % Description
+		\parbox{7em}{%
+		\hfill\color{White}#2}} \par  % Duration
+		#3
 		\normalsize \par}
 
-\newcommand{\AcademicEntry}[4]{
-		\noindent \textbf{#1} \hfill      % Study
-	     \noindent \textbf{#2} \par        % School
-		\noindent \textbf{#3} \par        % School
-		\noindent\hangindent=2em\hangafter=0 \small #4 % Description
-		\normalsize \par}
-		
-\newcommand{\HonorEntry}[4]{
-		\noindent #1 \hfill      % Study
-		\colorbox{Black}{%
-		\parbox{7em}{ \hfill\color{White}#2 }} \par  % Duration
-		\noindent #3 \par        % School
-		\noindent\hangindent=2em\hangafter=0 \small #4 % Description
+\newcommand{\Work}[3]{
+		\noindent \textbf{#1} \hfill      % 公司名称
+		\colorbox{Black}{\parbox{7em}{\hfill\color{White}#2}} \par  % 时间
+		#3 \par              % 职位
 		\normalsize \par}
 
-\newcommand{\WorkEntry}[4]{				  % Same as \EducationEntry
-		\noindent \textbf{#1} \hfill      % Jobname
-		\colorbox{Black}{\color{White}#2} \par  % Duration
-		\noindent \textit{#3} \par              % Company
-		\noindent\hangindent=2em\hangafter=0 \small #4 % Description
+\newcommand{\Academic}[2]{
+		\noindent \textbf{#1} \par      % 分类
+		\hangindent=2em \small #2 % 成果项
 		\normalsize \par}
 
 %%% Begin Document
@@ -124,21 +114,21 @@
 %		\includegraphics[width=0.15\textwidth]{photo}
 %\end{wrapfigure}
 
-\MyName{姜政冬}
-%\MySlogan{RubyChina}
+\Title{个人简历}
+% \MySlogan{RubyChina}
 
-\sepspace
+\sepspace % set spacing between lines
 
 %%% Personal details
 %%% ------------------------------------------------------------
-\NewPart{个人信息}{}
+\Section{基本信息}
 
 \begin{multicols}{2}                           % 分两栏
-\PersonalEntry{电  话}{18092482172}
-\PersonalEntry{邮  箱}{\url{xautjzd@gmail.com}}
-\PersonalEntry{地  址}{陕西省西安市}
-\PersonalEntry{GitHub}{https://github.com/xautjzd}
-\PersonalEntry{博  客}{http://xautjzd.github.com}
+	\Personal{姓 名}{姜政冬}
+	\Personal{电 话}{18668150635}
+	\Personal{邮  箱}{\url{xautjzd@gmail.com}}
+	\Personal{地  址}{浙江省杭州市}
+	\Personal{英 语}{CET-6}
 
 \columnbreak                                   % 强制分栏
 \includegraphics[width=0.2\textwidth\hfill]{xautjzd1.jpg}
@@ -146,83 +136,93 @@
 
 %%% Education
 %%% ------------------------------------------------------------
-\NewPart{教育经历}{}
+\Section{教育经历}
 
-\EducationEntry{西安理工大学(硕士-保研)}{2012-至今}{软件工程}{研一研二期间作为实验室核心成员参与多个项目开发，并在研二课题研究中研究过Hadoop，最终转向行为识别与移动云计算迁移，比较熟悉常用的分类算法。}
+\Education{西安理工大学}{2012.09-2015.07}{专业: 软件工程 学历: 硕士(保送)}
 \sepspace
+\Education{西安理工大学}{2008.08-2012.06}{专业: 网络工程 学历: 学士}
 
-\EducationEntry{西安理工大学(学士)}{2008-2012}{网络工程}{大一下自学C++；大二开始接触Linux，并开始钻研，Debian、Red Hat系列都玩过，最终选择Fedora；大二下自学Java，并研究过Struts2/Hibernate/Spring框架。}
+%%% Work
+%%% ------------------------------------------------------------
+\Section{工作经历}
+
+\Work{杭州端点网络科技有限公司(PaaS平台)}{2018.07-现在}{高级Golang开发工程师}
+\sepspace
+\Work{杭州网易有限网络公司(容器服务)}{2015.07-2018.07}{高级Java开发工程师}
+
+%%% Project
+%%% ------------------------------------------------------------
+\Section{项目经历}
+
+\SubSection{PaaS平台}{2018.07-现在}
+项目描述：端点PaaS平台(名为Dice)实现了代码构建、持续集成、持续部署、运维监控等，有效地提高企业的 IT 研发、
+运维、运营效率，降低成本。提供了遵循 GitFlow 规范的代码托管机制，采用 Pipeline 模式实现了代码编译、测试、
+打包等一系列的构建流程。遵循基础设施即代码设计理念，实现微服务一键编排部署。通过pipeline.yml描述构建流水线，
+dice.yml描述服务部署资源规格与依赖中间件等。底层容器云平台目前基于DCOS/Mesos/Marathon, 目前正在适配
+kubernetes中，Dice平台支持SaaS化部署与私有化部署两种方式。\par
+\sepspace
+项目职责: 维护整个Dice平台元信息存储，包括企业、集群、项目、应用、服务实例、主机资源、软件版本等信息；实现了
+Flink/Spark调度器(支持插件化开发，目前支持Marathon/Metronome/K8s/K8s Job/Flink/Spark/EDAS)开发。
+
+\SubSection{容器服务}{2015.07-2018.07}
+项目描述: 网易云容器服务基于Kubernetes，将Kubernetes相关功能产品化提供给用户，包含Namespace、
+无状态工作负载、有状态工作负载、服务发现、事件、云盘挂载等。另外容器服务团队还承担整个网易云控制台开发，
+包括各垂直服务接入、API流控、服务灰度发布等。\par
+\sepspace
+项目职责: Namespace、无状态工作负载研发；参与网易云私有化部署，负责容器服务、镜像仓库服务裁剪与适配，
+去除公有云组件依赖；云主机、云硬盘、弹性公网IP、负责均衡、对象存储、RDS、Redis、日志服务等透明转发；
+基于Redis实现流控，防止用户恶意刷API。
+
+\SubSection{镜像仓库}{2015.07-2018.07}
+项目描述: 实现与运维网易云镜像仓库服务，包括镜像分类展示、镜像搜索、镜像收藏、镜像构建(包含
+Dockerfile构建与源码构建两种方式)、运行中容器保存为镜像、镜像可用性检查等功能，基于原生
+Docker Registry开发认证授权功能，对接网易认证系统，开发registry后端存储插件对接网易对象
+存储，将镜像存储于网易对象存储。\par
+\sepspace
+项目职责: 独自开发与运维网易云镜像仓库
+
+\SubSection{分布式配置管理平台}{2017.05-2018.07}
+项目描述：基于Disconf搭建分布式配置管理平台，推动容器服务各组件将配置集中托管在配置管理平台，
+统一维护。原生Disconf无配置review，为实现此功能，特开发了git2disconf服务，将配置集中托管
+在git平台，基于git mr进行review，review完成后通过disconf API同步至Disconf。\par
+\sepspace
+项目职责: 独自开发与运维配置管理平台，采用容器化部署
 
 %%% Skills
 %%% ------------------------------------------------------------
-\NewPart{个人技能}{}
+\Section{个人技能}
 
-\SkillsEntry{专业技能}{熟悉Ruby及Ruby on Rails}
-\SkillsEntry{}{熟悉Vim, Git, Markdown}
-\SkillsEntry{}{熟悉Linux C、Socket编程}
-\SkillsEntry{}{熟悉Linux系统、Shell编程}
-\SkillsEntry{}{熟悉机器学习常用算法，了解Hadoop}
-\SkillsEntry{}{熟悉数据结构与与常用算法}
-\SkillsEntry{}{熟悉HTML/JavaScript/Json/Ajax}
-\SkillsEntry{}{熟悉ASP.NET MVC、SQL Server，了解MySQL、MongoDB}
-\SkillsEntry{}{了解Java、Tex、函数式编程}
-\SkillsEntry{英语水平}{CET-6}
-
-%\SkillsEntry{Software}{\textsc{Matlab}, \LaTeX, \textsc{Ansys}, \textsc{Comsol}}
-
-%%% Work experience
-%%% ------------------------------------------------------------
-\NewPart{项目经历}{}
-
-\EducationEntry{远程医疗系统}{2014.1-2014.3}{}{此系统的框架主要由我负责完成。我主要负责将以前着手的几个项目各功能抽取出来，形成一个框架，同时将UI从以前的EasyUI转换到Bootstrap，并且在其中集成权限管理、基本增删改查、图表曲线显示、报表生成、地图显示及文件的上传与下载等常用功能。}
-\sepspace
-
-\EducationEntry{气调库环境监测系统}{2013.5-2013.11}{}{主要功能为数据转换及数据图表显示，由我单独完成。采集设备将采集到的数据存储在Access数据库中，由于某些原因，需要将Access中的数据导出来，并且以图表形式直观地展示各冷库参数，通过Web进行远程监控，而不用派专职人员蹲守在设备采集点。}
-\sepspace
-
-\EducationEntry{生产经营信息管理系统}{2012.8-2013.9}{}{主要功能为信息的录入及报表的生成。此系统由我和研三师兄两人负责设计开发，前期由我和师兄共同设计开发，后期由于师兄面临毕业，主要由我负责完成。}
-\sepspace
-
-\EducationEntry{果业技术服务平台}{2011.9-2012.6}{}{主要功能是信息的发布与信息的维护，分前后台，前台主要针对一般用户进行信息的浏览，而后台则由企业人员负责维护，进行信息的添加与发布。系统由我与师兄共同开发，前期师兄负责系统的设计，而我负责实现。}
-
-
-%%% Awards & Honours
-%%% ------------------------------------------------------------
-\NewPart{获奖情况}{}
-
-\HonorEntry{获得国家励志奖学金}{2009-2010}{}
-
-\HonorEntry{获得院图灵杯科技节一等奖}{2010}{}
-
-\HonorEntry{获得校三等奖学金}{2008-2009}{}
-
-\HonorEntry{被评为2012届优秀毕业生}{2012}{}
-
-\HonorEntry{被西安秦北学校评为优秀志愿者}{2013}{}
-
-\HonorEntry{获得校三好学生荣誉称号}{2009-2010}{}
-
-\HonorEntry{生产实习中与小组成员一起获得最具团队精神小组称号}{2011}{}
+\begin{itemize}
+	\item 熟悉 Golang，1年项目使用经验
+	\item 熟悉 Java，3年项目使用经验
+	\item 熟悉 Docker、Docker Registry、Kubernetes、DCOS、Mesos、Marathon
+	\item 熟悉 MySQL/RabbitMQ/Etcd/Redis等中间件使用
+	\item 熟悉 Linux 环境
+	\item 熟练掌握 Git/Vim/Maven/Markdown/Goland/Intellij IDEA等
+	\item 了解分布式一致性协议
+	\item 了解 Ruby 及 Ruby on Rails
+	\item 了解 Tex/VimScript
+\end{itemize}
 
 %%% Academic Honors
 %%% ------------------------------------------------------------
-\NewPart{研究成果}{}
+\Section{学术成果}
 
-\AcademicEntry{论文发表}{}{}{基于灰色系统理论的气调库环境预测模型[J]. 计算机系统应用,2014,23(3):123-126,118}
+\Academic{论文发表}{基于灰色系统理论的气调库环境预测模型[J]. 计算机系统应用,2014,23(3):123-126,118}
 \sepspace
 
-\AcademicEntry{软件著作权}{}{}{气调库环境监测系统，国家版权局，软件登记号：2014SR019840，2014.2.19}
-\AcademicEntry{}{}{}{果品生产经营信息管理系统，国家版权局，软件登记号：2014SR039978，2014.04.09}
+\Academic{软件著作权}{气调库环境监测系统，国家版权局，软件登记号：2014SR019840，2014.2.19}
+\Academic{}{果品生产经营信息管理系统，国家版权局，软件登记号：2014SR039978，2014.04.09}
 \sepspace
 
 %%% Hobby
 %%% ------------------------------------------------------------
-%\NewPart{兴趣爱好}{}
-%热爱打羽毛球、乒乓球，喜欢看网球比赛、读书，经常逛科技博客、GitHub、Hacker News和Startup News，时刻关注科技新闻和业界动态。
+\Section{兴趣爱好}
+羽毛球、游泳、网球、阅读
 
-%%% Hobby
+%%% Self Asessment
 %%% ------------------------------------------------------------
-\NewPart{自我评价}{}
-热爱编程，喜欢钻研新语言、新技术，自学能力强，查找资料、分析解决问题能力强，同时敢于面对并克服困难，也能够吃苦耐劳，抗压能力较强。其次，我也一直很注重自己知识的储备，不断地给自己充电，养成每晚睡前阅读的习惯。
+\Section{自我评价}
+喜欢编程，自学能力较强，查找资料、分析解决问题能力较强。
 \end{CJK}     % 结束中文环境
 \end{document}

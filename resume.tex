@@ -146,23 +146,29 @@
 %%% ------------------------------------------------------------
 \Section{工作经历}
 
-\Work{杭州端点网络科技有限公司(PaaS平台)}{2018.07-现在}{高级Golang开发工程师}
+\Work{杭州端点网络科技有限公司-PaaS(阿里云生态)}{2018.07-现在}{高级Golang开发工程师}
 \sepspace
-\Work{杭州网易有限网络公司(容器服务)}{2015.07-2018.07}{高级Java开发工程师}
+\Work{杭州网易有限网络公司-网易云容器服务}{2015.07-2018.07}{高级Java开发工程师}
 
 %%% Project
 %%% ------------------------------------------------------------
 \Section{项目经历}
 
 \SubSection{端点PaaS平台}{2018.07-现在}
-项目描述：端点PaaS平台(名为Dice)实现了代码构建、持续集成、持续部署、运维监控等，有效地提高企业的 IT 研发、
+项目描述：端点PaaS平台(名为Dice)实现了源码托管、CI/CD、中间件管理、微服务治理、快数据、运维监控等，有效地提高企业的 IT 研发、
 运维、运营效率，降低成本。提供了遵循 GitFlow 规范的代码托管机制，采用 Pipeline 模式实现了代码编译、测试、
 打包等一系列的构建流程。遵循基础设施即代码设计理念，实现微服务一键编排部署。通过pipeline.yml描述构建流水线，
-dice.yml描述服务部署资源规格与依赖中间件等。底层容器云平台目前基于DCOS/Mesos/Marathon, 目前正在适配
-kubernetes中，Dice平台支持SaaS化部署与私有化部署两种方式。\par
+dice.yml描述服务部署资源规格与依赖中间件等。底层支持 Kubernetes \& DCOS \& 阿里云 EDAS 等 ，支持SaaS化部署与私有化部署两种方式。\par
 \sepspace
-项目职责: 维护整个Dice平台元信息存储，包括企业、集群、项目、应用、服务实例、主机资源、软件版本等信息；实现了
-Flink/Spark调度器(支持插件化开发，目前支持Marathon/Metronome/K8s/K8s Job/Flink/Spark/EDAS)开发。
+项目职责:  
+\begin{itemize}
+\item 负责开发并维护 Dice 平台事件管理，包括迭代、需求、任务、缺陷及与 MR 关联等功能
+\item 负责开发并维护 Dice 平台版本管理(通过 dice.yml 文件描述应用紧密相关的多个 service \& 所依赖中间件，发布时以 dice.yml 为最小粒度)
+\item 负责开发并维护 Dice 平台组织结构元数据(企业、项目、应用、runtime、service等)、集群元数据、ACL 数据、机器 \& 服务实例元信息存储
+\item 负责开发并维护 Dice 平台公告、工单等功能
+\item 实现了 Flink/Spark 调度器插件(自研调度器支持插件化开发，目前支持K8s/K8s Job/Marathon/Metronome//Flink/Spark/EDAS)
+\item 参与共建应用市场(自研工作流框架，通过 action 扩展功能，工作流任务通过 pipeline.yml 进行描述，与 github actions 类似)，开发了 java-deploy, js deploy 等 action
+\end{itemize}
 
 \SubSection{网易云容器服务}{2015.07-2018.07}
 项目描述: 网易云容器服务基于Kubernetes，将Kubernetes相关功能产品化提供给用户，包含Namespace、
@@ -193,14 +199,15 @@ Docker Registry开发认证授权功能，对接网易认证系统，开发regis
 \Section{个人技能}
 
 \begin{itemize}
-	\item 熟悉 Golang，1年项目使用经验
+	\item 熟悉 Golang，2年项目使用经验
 	\item 熟悉 Java，3年项目使用经验
-	\item 熟悉 Docker、Docker Registry、Kubernetes、DCOS、Mesos、Marathon
+	\item 熟悉 Docker、Docker Registry、Kubernetes，了解DCOS、Mesos、Marathon，有阅读 kubernetes 源码经验
 	\item 熟悉 MySQL/RabbitMQ/Etcd/Redis等中间件使用
-	\item 熟悉 Linux 环境
+	\item 熟悉 dns/http 等协议，阅读过相关 RFC
+	\item 熟悉 MacOS/Linux 环境 \& 常用命令
 	\item 熟练掌握 Git/Vim/Maven/Markdown/Goland/Intellij IDEA等
-	\item 了解分布式一致性协议
-	\item 了解 Ruby 及 Ruby on Rails
+	\item 了解 calico 网络，可通过 tcpdump 分析常见网络问题
+	\item 了解 Raft \& Paxos 等分布式一致性协议、分布式相关的 CAP \& BASE 理论
 	\item 了解 Tex/VimScript
 \end{itemize}
 
@@ -223,6 +230,6 @@ Docker Registry开发认证授权功能，对接网易认证系统，开发regis
 %%% Self Asessment
 %%% ------------------------------------------------------------
 \Section{自我评价}
-喜欢编程，自学能力较强，查找资料、分析解决问题能力较强。
+热爱编程，专注于服务端；学习能力较强，乐于接受新鲜事物，分析解决问题能力较强
 \end{CJK}     % 结束中文环境
 \end{document}

@@ -162,12 +162,13 @@ dice.yml描述服务部署资源规格与依赖中间件等。底层支持 Kuber
 \sepspace
 项目职责:  
 \begin{itemize}
+\item 负责开发并维护 Dice cli(基于cobra)，将 CI/CD、市场推送等关键能力通过 cli 提供给用户，为用户提效
+\item 负责开发并维护 Dice 平台组织结构元数据(企业、项目、应用、runtime、service等)、集群元数据、ACL 数据、机器 \& 服务实例元信息存储
 \item 负责开发并维护 Dice 平台事件管理，包括迭代、需求、任务、缺陷及与 MR 关联等功能
 \item 负责开发并维护 Dice 平台版本管理(通过 dice.yml 文件描述应用紧密相关的多个 service \& 所依赖中间件，发布时以 dice.yml 为最小粒度)
-\item 负责开发并维护 Dice 平台组织结构元数据(企业、项目、应用、runtime、service等)、集群元数据、ACL 数据、机器 \& 服务实例元信息存储
+\item 参与共建应用市场(自研工作流框架，通过 action 扩展功能，工作流任务通过 pipeline.yml 进行描述，与 github actions 类似)，开发了 java-deploy, js deploy 等 action
 \item 负责开发并维护 Dice 平台公告、工单等功能
 \item 实现了 Flink/Spark 调度器插件(自研调度器支持插件化开发，目前支持K8s/K8s Job/Marathon/Metronome//Flink/Spark/EDAS)
-\item 参与共建应用市场(自研工作流框架，通过 action 扩展功能，工作流任务通过 pipeline.yml 进行描述，与 github actions 类似)，开发了 java-deploy, js deploy 等 action
 \end{itemize}
 
 \SubSection{网易云容器服务}{2015.07-2018.07}

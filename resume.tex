@@ -146,35 +146,35 @@
 %%% ------------------------------------------------------------
 \Section{工作经历}
 
-\Work{杭州端点网络科技有限公司-PaaS(阿里云生态)}{2018.07-现在}{高级Golang开发工程师}
+\Work{杭州端点网络科技有限公司-PaaS(阿里云生态)}{2018.07-现在}{高级 Golang 开发工程师}
 \sepspace
-\Work{杭州网易有限网络公司-网易云容器服务}{2015.07-2018.07}{高级Java开发工程师}
+\Work{杭州网易有限网络公司-网易云容器服务}{2015.07-2018.07}{高级 Java 开发工程师}
 
 %%% Project
 %%% ------------------------------------------------------------
 \Section{项目经历}
 
-\SubSection{端点PaaS平台}{2018.07-现在}
-项目描述：端点PaaS平台(名为Dice)实现了源码托管、CI/CD、中间件管理、微服务治理、快数据、运维监控等，有效地提高企业的 IT 研发、
+\SubSection{端点 PaaS 平台}{2018.07-现在}
+项目描述：端点 PaaS 平台(名为 Dice)实现了源码托管、CI/CD、中间件管理、微服务治理、快数据、运维监控等，有效地提高企业的 IT 研发、
 运维、运营效率，降低成本。提供了遵循 GitFlow 规范的代码托管机制，采用 Pipeline 模式实现了代码编译、测试、
-打包等一系列的构建流程。遵循基础设施即代码设计理念，实现微服务一键编排部署。通过pipeline.yml描述构建流水线，
-dice.yml描述服务部署资源规格与依赖中间件等。底层支持 Kubernetes \& DCOS \& 阿里云 EDAS 等 ，支持SaaS化部署与私有化部署两种方式。\par
+打包等一系列的构建流程。遵循基础设施即代码设计理念，实现微服务一键编排部署。通过 pipeline.yml 描述构建流水线，
+dice.yml 描述服务部署资源规格与依赖中间件等。底层支持 Kubernetes \& DCOS \& 阿里云 EDAS 等 ，支持 SaaS 化部署与私有化部署两种方式。\par
 \sepspace
 项目职责:  
 \begin{itemize}
-\item 负责开发并维护 Dice cli(基于cobra)，将 CI/CD、市场推送等关键能力通过 cli 提供给用户，为用户提效
-\item 负责开发并维护 Dice 平台组织结构元数据(企业、项目、应用、runtime、service等)、集群元数据、ACL 数据、机器 \& 服务实例元信息存储
+\item 负责开发并维护 Dice cli(基于 cobra)，将 CI/CD、市场推送等关键能力通过 cli 提供给用户，为用户提效
+\item 负责开发并维护 Dice 平台组织结构元数据(企业、项目、应用、runtime、service 等)、集群元数据、ACL 数据、机器 \& 服务实例元信息存储
 \item 负责开发并维护 Dice 平台事件管理，包括迭代、需求、任务、缺陷及与 MR 关联等功能
 \item 负责开发并维护 Dice 平台版本管理(通过 dice.yml 文件描述应用紧密相关的多个 service \& 所依赖中间件，发布时以 dice.yml 为最小粒度)
 \item 参与共建应用市场(自研工作流框架，通过 action 扩展功能，工作流任务通过 pipeline.yml 进行描述，与 github actions 类似)，开发了 java-deploy, js deploy 等 action
 \item 负责开发并维护 Dice 平台公告、工单等功能
-\item 实现了 Flink/Spark 调度器插件(自研调度器支持插件化开发，目前支持K8s/K8s Job/Marathon/Metronome//Flink/Spark/EDAS)
+\item 实现了 Flink/Spark 调度器插件(自研调度器支持插件化开发，目前支持 K8s/K8s Job/Marathon/Metronome//Flink/Spark/EDAS)
 \end{itemize}
 
 \SubSection{网易云容器服务}{2015.07-2018.07}
-项目描述: 网易云容器服务基于Kubernetes，将Kubernetes相关功能产品化提供给用户，包含Namespace、
+项目描述: 网易云容器服务基于 Kubernetes，将 Kubernetes 相关功能产品化提供给用户，包含 Namespace、
 无状态工作负载、有状态工作负载、服务发现、事件、云盘挂载等。另外容器服务团队还承担整个网易云控制台开发，
-包括各垂直服务接入、API流控、服务灰度发布等。\par
+包括各垂直服务接入、API 流控、服务灰度发布等。\par
 \sepspace
 项目职责: Namespace、无状态工作负载研发；参与网易云私有化部署，负责容器服务、镜像仓库服务裁剪与适配，
 去除公有云组件依赖；云主机、云硬盘、弹性公网IP、负责均衡、对象存储、RDS、Redis、日志服务等透明转发；
@@ -182,16 +182,16 @@ dice.yml描述服务部署资源规格与依赖中间件等。底层支持 Kuber
 
 \SubSection{网易云镜像仓库}{2015.07-2018.07}
 项目描述: 实现与运维网易云镜像仓库服务，包括镜像分类展示、镜像搜索、镜像收藏、镜像构建(包含
-Dockerfile构建与源码构建两种方式)、运行中容器保存为镜像、镜像可用性检查等功能，基于原生
-Docker Registry开发认证授权功能，对接网易认证系统，开发registry后端存储插件对接网易对象
+Dockerfile 构建与源码构建两种方式)、运行中容器保存为镜像、镜像可用性检查等功能，基于原生
+Docker Registry 开发认证授权功能，对接网易认证系统，开发 registry 后端存储插件对接网易对象
 存储，将镜像存储于网易对象存储。\par
 \sepspace
 项目职责: 独自开发与运维网易云镜像仓库
 
 \SubSection{分布式配置管理平台}{2017.05-2018.07}
-项目描述：基于Disconf搭建分布式配置管理平台，推动容器服务各组件将配置集中托管在配置管理平台，
-统一维护。原生Disconf无配置review，为实现此功能，特开发了git2disconf服务，将配置集中托管
-在git平台，基于git mr进行review，review完成后通过disconf API同步至Disconf。\par
+项目描述：基于 Disconf 搭建分布式配置管理平台，推动容器服务各组件将配置集中托管在配置管理平台，
+统一维护。原生 Disconf 无配置 review，为实现此功能，特开发了 git2disconf 服务，将配置集中托管
+在git平台，基于 git mr 进行 review，review 完成后通过 disconf API 同步至 Disconf。\par
 \sepspace
 项目职责: 独自开发与运维配置管理平台，采用容器化部署
 
@@ -203,10 +203,10 @@ Docker Registry开发认证授权功能，对接网易认证系统，开发regis
 	\item 熟悉 Golang，2年项目使用经验
 	\item 熟悉 Java，3年项目使用经验
 	\item 熟悉 Docker、Docker Registry、Kubernetes，了解DCOS、Mesos、Marathon，有阅读 kubernetes 源码经验
-	\item 熟悉 MySQL/RabbitMQ/Etcd/Redis等中间件使用
+	\item 熟悉 MySQL/RabbitMQ/Etcd/Redis 等中间件使用
 	\item 熟悉 dns/http 等协议，阅读过相关 RFC
 	\item 熟悉 MacOS/Linux 环境 \& 常用命令
-	\item 熟练掌握 Git/Vim/Maven/Markdown/Goland/Intellij IDEA等
+	\item 熟练掌握 Git/Vim/Maven/Markdown/Goland/Intellij IDEA 等
 	\item 了解 calico 网络，可通过 tcpdump 分析常见网络问题
 	\item 了解 Raft \& Paxos 等分布式一致性协议、分布式相关的 CAP \& BASE 理论
 	\item 了解 Tex/VimScript

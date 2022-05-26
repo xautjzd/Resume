@@ -124,11 +124,12 @@
 \Section{基本信息}
 
 \begin{multicols}{2}                           % 分两栏
-	\Personal{姓 名}{姜政冬}
-	\Personal{电 话}{18668150635}
-	\Personal{邮  箱}{\url{xautjzd@gmail.com}}
-	\Personal{地  址}{浙江省杭州市}
-	\Personal{英 语}{CET-6}
+\Personal{姓 名}{姜政冬}
+\Personal{电 话}{18668150635}
+\Personal{邮  箱}{\url{xautjzd@gmail.com}}
+\Personal{住  址}{浙江省杭州市}
+\Personal{GitHub}{https://github.com/xautjzd}
+\Personal{英 语}{CET-6}
 
 \columnbreak                                   % 强制分栏
 \includegraphics[width=0.2\textwidth\hfill]{xautjzd1.jpg}
@@ -146,100 +147,70 @@
 %%% ------------------------------------------------------------
 \Section{工作经历}
 
-\Work{杭州端点网络科技有限公司-低代码平台}{2020.07-现在}{高级 Java 开发工程师}
-\Work{杭州端点网络科技有限公司-Paas 平台}{2018.07-2020.06}{高级 Golang 开发工程师}
+\Work{阿里云端点科技-低代码平台}{2020.07-现在}{资深 Java 开发工程师}
+\Work{阿里云端点科技-Paas 平台}{2018.07-2020.06}{资深 Golang 开发工程师}
 \sepspace
-\Work{杭州网易有限网络公司-网易云容器服务}{2015.07-2018.07}{高级 Java 开发工程师}
+\Work{杭州网易网络有限公司-网易云容器服务}{2015.07-2018.07}{高级 Java 开发工程师}
 
 %%% Project
 %%% ------------------------------------------------------------
 \Section{项目经历}
 
-\SubSection{端点低代码平台}{2020.07-现在}
-项目描述: 端点低代码平台为元数据驱动开发平台，用于支撑端点业务系统，可基于此平台针对标品快速二开，满足企业交付的差异化需求。专注于企业中后台系统，提供了一套研发体系，定义了一套DSL \& 研发框架，可快速构建出业务系统。\par
+\SubSection{低代码平台}{2020.07-现在}
+项目描述: Trantor 是一个中后台业务应用的快速研发与交付体系，通过对应用、交互 \& 场景的抽象，以元数据驱动的方式为业务应用开发提效，主要抽象了模型、逻辑、视图三大类资源，其中模型主要用于承载业务数据，逻辑为业务流程编排的抽象，可方便二开，视图抽象了一套 DSL，以便后端开发快速实现数据的展示。\par
 \sepspace
 项目职责:
 \begin{itemize}
-\item 负责研发框架机制部分功能开发，包括 i18n 机制、机器翻译、元数据发布流程、事件监听机制等
-\item 负责后端研发规范制定 \& 落地
+\item 负责 Trantor 核心机制开发，包括场景抽象、元数据采集、业务流程编排、模型触发器、i18n 等机制开发。
+\item 负责后端研发规范制定 \& 落地。
 \end{itemize}
 
 \SubSection{端点 PaaS 平台}{2018.07-2020.06}
-项目描述：端点 PaaS 平台(名为 Dice)实现了源码托管、CI/CD、中间件管理、微服务治理、快数据、运维监控等，有效地提高企业的 IT 研发、
-运维、运营效率，降低成本。提供了遵循 GitFlow 规范的代码托管机制，采用 Pipeline 模式实现了代码编译、测试、
-打包等一系列的构建流程。遵循基础设施即代码设计理念，实现微服务一键编排部署。通过 pipeline.yml 描述构建流水线，
-dice.yml 描述服务部署资源规格与依赖中间件等。底层支持 Kubernetes \& DCOS \& 阿里云 EDAS 等 ，支持 SaaS 化部署与私有化部署两种方式。\par
+项目描述：端点 PaaS 平台(名为 Erda)基于 Docker \& Kubernetes 构建(之前采用 DC/OS Marathon \& Mesos)，提供了源码托管、CI/CD、中间件管理、微服务治理、快数据、运维监控、测试平台等功能，有效地提高企业的 IT 研发、运维、运营效率，降低成本。遵循基础设施及代码理念，抽象了 pipeline.yml \& dice.yml，分别用于描述 CI 场景 \& CD 场景，其中 CI 抽象与 GitHub Workflow/Travis CI 类似，节点功能可自行扩展，CD 抽象包含服务所需 cpu \& memory、副本数、暴露端口、依赖中间件等，一键拉起所有服务, 支持 SaaS 化部署与私有化部署两种方式。\par
 \sepspace
 项目职责:  
 \begin{itemize}
-\item 负责开发并维护 Dice cli(基于 cobra)，将 CI/CD、市场推送等关键能力通过 cli 提供给用户，为用户提效
-\item 负责开发并维护 Dice 平台组织结构元数据(企业、项目、应用、runtime、service 等)、集群元数据、ACL 数据、机器 \& 服务实例元信息存储
-\item 负责开发并维护 Dice 平台事件管理，包括迭代、需求、任务、缺陷及与 MR 关联等功能
-\item 负责开发并维护 Dice 平台版本管理(通过 dice.yml 文件描述应用紧密相关的多个 service \& 所依赖中间件，发布时以 dice.yml 为最小粒度)
-\item 参与共建应用市场(自研工作流框架，通过 action 扩展功能，工作流任务通过 pipeline.yml 进行描述，与 github actions 类似)，开发了 java-deploy, js deploy 等 action
-\item 负责开发并维护 Dice 平台公告、工单等功能
-\item 实现了 Flink/Spark 调度器插件(自研调度器支持插件化开发，目前支持 K8s/K8s Job/Marathon/Metronome//Flink/Spark/EDAS)
+\item 负责抽象并维护 Erda 部署所需制品。
+\item 负责开发并维护 Erda cli(基于 cobra)，将 CI/CD、市场推送等关键能力通过 cli 提供给用户，为用户提效。
+\item 负责开发并维护 pipeline.yml 常用场景所需的 actions，如(java 构建、javascript 构建、git-checkout 等)。
+\item 负责开发并维护 Erda 平台的各种元信息(如企业、项目、应用、Runtime、Service、实例等)。
+\item 负责 Erda 调度器插件 Spark/Flink 的开发，支持通过 Erda 将任务提交至 Spark/Flink 平台。
+\item 作为核心主力完成 Erda 平台从早期 Kotlin 到 Go 重构，及底层编排引擎从 DC/OS(Mesos) 到 Kubernetes 的迁移。 
 \end{itemize}
 
-\SubSection{网易云容器服务}{2015.07-2018.07}
-项目描述: 网易云容器服务基于 Kubernetes，将 Kubernetes 相关功能产品化提供给用户，包含 Namespace、
-无状态工作负载、有状态工作负载、服务发现、事件、云盘挂载等。另外容器服务团队还承担整个网易云控制台开发，
-包括各垂直服务接入、API 流控、服务灰度发布等。\par
+\SubSection{网易云容器平台}{2015.07-2018.07}
+项目描述: 网易云容器平台作为网易云的子产品，基于网易内部 Iaas 平台 \& Kubernetes 提供公有云容器服务 \& 公有云镜像仓库，具体包括有状态工作负载、无状态工作负载、服务发现、云盘挂载、弹性公网 IP 绑定、镜像构建、上传、下载、分享等功能。另外，团队还承担整个网易云控制台开发，包括各垂直服务接入、API 流控、服务灰度发布等。\par
 \sepspace
-项目职责: Namespace、无状态工作负载研发；参与网易云私有化部署，负责容器服务、镜像仓库服务裁剪与适配，
-去除公有云组件依赖；云主机、云硬盘、弹性公网IP、负责均衡、对象存储、RDS、Redis、日志服务等透明转发；
-基于Redis实现流控，防止用户恶意刷API。
-
-\SubSection{网易云镜像仓库}{2015.07-2018.07}
-项目描述: 实现与运维网易云镜像仓库服务，包括镜像分类展示、镜像搜索、镜像收藏、镜像构建(包含
-Dockerfile 构建与源码构建两种方式)、运行中容器保存为镜像、镜像可用性检查等功能，基于原生
-Docker Registry 开发认证授权功能，对接网易认证系统，开发 registry 后端存储插件对接网易对象
-存储，将镜像存储于网易对象存储。\par
-\sepspace
-项目职责: 独自开发与运维网易云镜像仓库
-
-\SubSection{分布式配置管理平台}{2017.05-2018.07}
-项目描述：基于 Disconf 搭建分布式配置管理平台，推动容器服务各组件将配置集中托管在配置管理平台，
-统一维护。原生 Disconf 无配置 review，为实现此功能，特开发了 git2disconf 服务，将配置集中托管
-在git平台，基于 git mr 进行 review，review 完成后通过 disconf API 同步至 Disconf。\par
-\sepspace
-项目职责: 独自开发与运维配置管理平台，采用容器化部署
+项目职责:
+\begin{itemize}
+\item 负责 Namespace 生命周期管理、Deployment 生命周期管理(包括云主机申请、云盘挂载、弹性公网 IP 绑定等)。
+\item 负责镜像仓库开发 \& 维护，基于开源 Docker Registry 构建，底层存储对接网易云 OSS，认证对接网易云账号体系，提供功能有镜像分类展示、镜像搜索、镜像收藏、镜像构建(Dockerfile 构建 \& 源码构建)、上传下载等。
+\item 维护内部分布式配置管理平台, 基于 Disconf 构建，在此基础上提供配置 review 机制。
+\end{itemize}
 
 %%% Skills
 %%% ------------------------------------------------------------
 \Section{个人技能}
 
 \begin{itemize}
-    \item 熟悉 Java，6年项目使用经验; 熟悉 Golang，2年项目使用经验; 熟悉 shell \& Linux 命令
-	\item 熟悉 MySQL/RabbitMQ/Etcd/Redis 等中间件, 了解 Kafka, RocketMQ
-	\item 熟悉 Docker、Docker Registry、Kubernetes，了解DCOS、Mesos、Marathon，有阅读 kubernetes 源码经验
-	\item 熟悉 dns/http 等协议，阅读过相关 RFC, 利用 tcpdump/wireshark 分析过协议细节
-	\item 熟悉 MacOS/Linux 环境 \& 常用命令
-	\item 熟练掌握 Git/Vim/Maven/Markdown/Goland/Intellij IDEA 等
-    \item 了解Rust, 通过 Rust 官网提供的 Rust book 学习过Rust 语法
-	\item 了解 Raft \& Paxos 等分布式一致性协议、分布式相关的 CAP \& BASE 理论
-	\item 了解 Tex/VimScript
+\item 熟悉 Java 基础 \& Spring 机制原理，6年项目使用经验; 熟悉 Golang，3年项目使用经验。
+\item 熟悉 Linux 系统 \& Shell，10+ 年使用经验。
+\item 熟悉 MySQL、Redis、Etcd、RocketMQ、Kafka 等中间件。
+\item 熟悉 Docker、Docker Registry、Kubernetes，了解DCOS、Mesos、Marathon，有阅读 kubernetes 源码经验。
+\item 熟悉 DNS、TCP/IP 等协议，有 RFC 阅读经验, 利用 tcpdump/Wireshark 分析过协议细节。
+\item 熟练掌握 Git 使用及底层工作原理，熟练使用 Vim，最近刚转至 Emacs，开始学习 Emacs Lisp。
+\item 了解 Rust, 通过 Rust 官网提供的 Rust book 学习过 Rust 基础。
+\item 英语 CET-6，轻松阅读各种英文技术文档。
 \end{itemize}
-
-%%% Academic Honors
-%%% ------------------------------------------------------------
-\Section{学术成果}
-
-\Academic{论文发表}{基于灰色系统理论的气调库环境预测模型[J]. 计算机系统应用,2014,23(3):123-126,118}
-\sepspace
-
-\Academic{软件著作权}{气调库环境监测系统，国家版权局，软件登记号：2014SR019840，2014.2.19}
-\Academic{}{果品生产经营信息管理系统，国家版权局，软件登记号：2014SR039978，2014.04.09}
-\sepspace
 
 %%% Hobby
 %%% ------------------------------------------------------------
 \Section{兴趣爱好}
-热爱羽毛球、游泳、网球等运动，喜欢阅读宏观经济学、历史、地理等书籍
+热爱羽毛球、游泳、网球等运动，喜欢阅读宏观经济学、历史、社科类书籍。
 
 %%% Self Asessment
 %%% ------------------------------------------------------------
 \Section{自我评价}
-热爱编程，专注于服务端；学习能力较强，乐于接受新鲜事物，分析解决问题能力较强
+热爱编程，喜欢通过官方文档学习技术；学习能力强，乐于接受新鲜事物，查找分析解决问题能力强。
 \end{CJK}     % 结束中文环境
 \end{document}
